@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+}
+
+.posts {
+  flex: 10;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sideBar {
+  flex: 3;
+}
+
+.wrapper {
+  display: grid;
+  margin: 1rem;
+  padding: 0.6rem;
+  grid-gap: 5px;
+  grid-template-columns: 150px 150px 150px;
+  grid-auto-rows: minmax(150px, auto);
+  color: #444;
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+.box {
+  background-color: #273c75;
+  color: #fff;
+  border-radius: 5px;
+  padding: 1rem;
+  padding-top: 1rem;
+  list-style-type: none;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+  font-size: inherit;
+}
+
+.box:hover {
+  background-color: #192a56;
+}
+
+.a {
+  grid-area: 1 / 2 / 2 / 3;
+  text-align: center;
+}
+.b {
+  grid-area: 2 / 2 / 3 / 3;
+  text-align: center;
+}
+.c {
+  grid-area: 2 / 3 / 3 / 4;
+  text-align: center;
+}
+.d {
+  grid-area: 1 / 1 / 2 / 2;
+  text-align: center;
+}
+.e {
+  grid-area: 2 / 1 / 3 / 2;
+  text-align: center;
+}
+.f {
+  grid-area: 1 / 3 / 2 / 4;
+  text-align: center;
+}
+
+.writePostBtn {
+  position: absolute;
+  top: 90px;
+  right: 70px;
+  color: white;
+  background-color: #3867d6;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.writePostBtn:hover {
+  background-color: #4b7bec;
+}

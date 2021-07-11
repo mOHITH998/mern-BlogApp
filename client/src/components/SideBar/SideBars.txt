@@ -1,0 +1,168 @@
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  Avatar,
+  Typography,
+  Button,
+  ButtonBase,
+  Grid,
+} from '@material-ui/core';
+import useStyles from './styles';
+
+const images = [
+  {
+    url: '../Img/post-4.jpg',
+    title: 'Sports',
+    width: '40%',
+  },
+  {
+    url: '../Img/post-1.jpg',
+    title: 'Tech',
+    width: '40%',
+  },
+  {
+    url: '../Img/post-2.jpg',
+    title: 'Business',
+    width: '40%',
+  },
+  {
+    url: '../Img/cat-Music.jpg',
+    title: 'Music',
+    width: '40%',
+  },
+  {
+    url: '../Img/cat-Ent.jpg',
+    title: 'Entertainment',
+    width: '40%',
+  },
+  {
+    url: '../Img/cat-Sci.jpg',
+    title: 'Science',
+    width: '40%',
+  },
+];
+
+function SideBars() {
+  const location = useLocation();
+  console.log(location);
+  const classes = useStyles();
+  return (
+    <div className={classes.sideBar}>
+      <span className={classes.sideBarTitle}>Latest Posts</span>
+      <div className={classes.sideBarWrapper}>
+        <div className={classes.userInfo}>
+          <Avatar
+            className={classes.userSmall}
+            src="../Img/profile.jpg"
+            alt="Remy Sharp"
+          />{' '}
+          <span className={classes.userName}>sharp@88</span>
+        </div>
+
+        <span className={classes.postTitle}>Lorem ipsum dolor sit.</span>
+
+        <div className={classes.postDetails}>
+          <span>jan 8</span>
+          <span>2 min ago</span>
+        </div>
+      </div>
+      <div className={classes.sideBarWrapper}>
+        <div className={classes.userInfo}>
+          <Avatar
+            className={classes.userSmall}
+            src="../Img/profile2.jpg"
+            alt="Remy Sharp"
+          />{' '}
+          <span className={classes.userName}>sharp@88</span>
+        </div>
+        <span className={classes.postTitle}>Lorem ipsum dolor sit.</span>
+        <div className={classes.postDetails}>
+          <span>jan 8</span>
+          <span>27 min ago</span>
+        </div>
+      </div>
+      <div className={classes.sideBarWrapper}>
+        <div className={classes.userInfo}>
+          <Avatar
+            className={classes.userSmall}
+            src="../Img/profile3.jpg"
+            alt="Remy Sharp"
+          />{' '}
+          <span className={classes.userName}>sharp@88</span>
+        </div>
+        <span className={classes.postTitle}>Lorem ipsum dolor sit.</span>
+        <div className={classes.postDetails}>
+          <span>jan 8</span>
+          <span>53 min ago</span>
+        </div>
+      </div>
+      <div className={classes.sideBarWrapper}>
+        <div className={classes.userInfo}>
+          <Avatar
+            className={classes.userSmall}
+            src="../Img/profile4.jpg"
+            alt="Remy Sharp"
+          />{' '}
+          <span className={classes.userName}>sharp@88</span>
+        </div>
+        <span className={classes.postTitle}>Lorem ipsum dolor sit.</span>
+        <div className={classes.postDetails}>
+          <span>jan 8</span>
+          <span>14 min ago</span>
+        </div>
+      </div>
+      <div className={classes.userLogin}>
+        <Typography
+          variant="h6"
+          align="center"
+          style={{ borderBottom: '3px #2f3640 solid', marginBottom: '0.7rem' }}
+        >
+          Account
+        </Typography>
+        <Button
+          variant="outlined"
+          color="primary"
+          style={{ marginBottom: '1rem' }}
+        >
+          Login
+        </Button>
+        <Button variant="outlined" color="secondary">
+          Sing up
+        </Button>
+      </div>
+      <span className={classes.catsTitle}>categories</span>
+      <div className={classes.root}>
+        {images.map((img) => (
+          <ButtonBase
+            focusRipple
+            key={img.title}
+            className={classes.image}
+            focusVisibleClassName={classes.focusVisible}
+            style={{ width: img.width }}
+          >
+            <span
+              className={classes.imageSrc}
+              style={{
+                backgroundImage: `url(${img.url})`,
+              }}
+            />
+            <span className={classes.imageBackdrop} />
+            <span className={classes.imageButton}>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                className={classes.imageTitle}
+              >
+                {img.title}
+                <span className={classes.imageMarked} />
+              </Typography>
+            </span>
+          </ButtonBase>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default SideBars;
