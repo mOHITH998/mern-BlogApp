@@ -23,7 +23,7 @@ MERN Blog Application
 
 - User can create post which include's uploading File/Image.
 
-- User can search specify user/author's posts and also categories based on user's interest.
+- User can search specific user/author's posts and also categories based on user's interest.
 
 - For quick Posts, User can click on sidebar(Right Side)
 
