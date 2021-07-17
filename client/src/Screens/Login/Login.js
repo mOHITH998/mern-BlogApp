@@ -1,19 +1,28 @@
-import axios from 'axios';
-import React, { useRef, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Context } from '../../context/Context';
+import axios from "axios";
+import React, { useRef, useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 import {
   LoginRequest,
   LoginSuccess,
   LoginFailure,
-} from '../../context/ActionContext';
-import useStyles from './styles';
+} from "../../context/ActionContext";
+import useStyles from "./styles";
+import {
+  IconButton,
+  Input,
+  InputAdornment,
+  TextField,
+} from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 function Login() {
   const classes = useStyles();
 
   const userRef = useRef();
   const passwordRef = useRef();
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
   const { user, isFetching, dispatch } = useContext(Context);
 
@@ -34,6 +43,10 @@ function Login() {
       dispatch(LoginFailure());
     }
   };
+  console.log(onSubmit);
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
   return (
     <div className={classes.loginWrapper}>
       <div className={classes.loginContainer}>
@@ -49,13 +62,25 @@ function Login() {
             ref={userRef}
           />
           <label className={classes.label}>Password</label>
-          <input
-            type="password"
+          <TextField
+            type={showPassword ? "text" : "password"}
             required
             minLength="8"
             className={classes.loginInput}
             placeholder="Enter your Password"
             ref={passwordRef}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <button
             className={classes.loginBtn}
@@ -66,8 +91,8 @@ function Login() {
           </button>
           {error && <span className={classes.errorShow}>Wrong Credential</span>}
         </form>
-        <span style={{ fontWeight: '500' }}>
-          New user?{' '}
+        <span style={{ fontWeight: "500" }}>
+          New user?{" "}
           <Link to="/register">
             <button className={classes.regBtn}>Register</button>
           </Link>

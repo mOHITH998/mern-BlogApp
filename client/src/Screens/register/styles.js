@@ -29,17 +29,21 @@ export default makeStyles((theme) => ({
     marginTop: '1.2rem',
     display: 'flex',
     flexDirection: 'column',
+    lineHeight: '2rem'
   },
+  label: {
+  fontSize: '1.2rem',
+},
   registerInput: {
-    padding: '1rem',
-    background: 'white',
+   padding: '1.2rem',
+    fontSize: '1rem',
+    background: '#f4f4f4',
     border: 'none',
     marginTop: '0.6rem',
-    borderRadius: '10px',
+    borderRadius: '5px',
     '&:focus': {
       outline: 'none',
     },
-    marginBottom: '0.8rem',
   },
   registerBtn: {
     marginTop: '1.3rem',
@@ -56,4 +60,14 @@ export default makeStyles((theme) => ({
     },
     textTransform: 'uppercase',
   },
+  errorShow: {
+    color: '#f39c12',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontWeight: '600'
+  },
+  registerTextField: {
+    
+  }
 }));

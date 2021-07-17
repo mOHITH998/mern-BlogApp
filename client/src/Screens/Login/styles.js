@@ -67,9 +67,10 @@ export default makeStyles((theme) => ({
     textDecoration: 'underline',
   },
   errorShow: {
-    color: 'red',
+    color: '#e74c3c',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    fontWeight: '600'
   },
 }));

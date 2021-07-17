@@ -1,5 +1,5 @@
-import React, { useContext, useRef, useState } from 'react';
-import axios from 'axios';
+import React, { useContext, useRef, useState } from "react";
+import axios from "axios";
 import {
   FormControl,
   Select,
@@ -7,19 +7,22 @@ import {
   MenuItem,
   Container,
   Button,
-} from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import { Context } from '../../context/Context';
+} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import { Context } from "../../context/Context";
 
-import useStyles from '../styles';
+import EDITORJS from "react-editor-js";
+import { EDITORJS_TOOLS } from "../../editorjs/constants";
+
+import useStyles from "../styles";
 
 function WritePost() {
   const classes = useStyles();
   const [file, setFile] = useState(null);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const { user } = useContext(Context);
 
   const onSubmitPost = async (e) => {
@@ -33,15 +36,15 @@ function WritePost() {
     if (file) {
       const formData = new FormData();
       const fileName = file.name;
-      formData.append('name', fileName);
-      formData.append('file', file);
+      formData.append("name", fileName);
+      formData.append("file", file);
       newPost.image = fileName;
       try {
-        await axios.post('http://localhost:4000/api/v3/upload', formData);
+        await axios.post("http://localhost:4000/api/v3/upload", formData);
       } catch (error) {}
       try {
         const { data } = await axios.post(
-          'http://localhost:4000/api/v3/posts/post-create',
+          "http://localhost:4000/api/v3/posts/post-create",
           newPost
         );
         window.location.replace(`/posts/?user=${data.savePost.username}`);
@@ -69,10 +72,9 @@ function WritePost() {
             <input
               type="file"
               id="fileInput"
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               onChange={(e) => setFile(e.target.files[0])}
             />
-
             <input
               type="text"
               className={classes.writePostInput}
@@ -104,9 +106,8 @@ function WritePost() {
               placeholder="Tell your beautiful Story..."
               type="text"
               onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
+            />
           </div>
-
           <button type="submit" className="writePostBtn">
             Publish
           </button>
