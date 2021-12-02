@@ -28,11 +28,4 @@ exports.admin = (req, res, next) => {
     res.status(403).json(`you don't have permission`)
   }
 };
-  // if (req.user && req.user.isAdmin) {
-  //   console.log('Welcome Admin!')
-  //   next();
-  // } else {
-  //   res.status(401).json("Not Authorized, Only admin can perform");
-  // }
-  // next()
 
