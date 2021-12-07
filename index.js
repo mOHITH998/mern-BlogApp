@@ -41,6 +41,10 @@ app.post("/api/v3/upload", fileUpload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
 
+app.get('/', (req, res) => {
+  res.send('<h2> Hello Server </h2>')
+})
+
 app.use("/api/v3/posts", postRouter);
 app.use("/api/v3/users", authRouter, userRouter);
 app.use("/api/v3/category", authRouter, userRouter);
