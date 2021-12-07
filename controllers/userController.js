@@ -40,7 +40,7 @@ exports.updateUser = asyncHandler(async (req, res) => {
 
 exports.deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
-  if (user === req.user.id) {
+  if (user) {
     user.remove();
     res.status(204).json({
       status: 'success',
