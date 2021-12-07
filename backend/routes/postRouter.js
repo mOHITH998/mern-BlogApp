@@ -17,10 +17,10 @@ router.route('/').get(getAllPosts);
 
 router.route('/:id').get(getPosts);
 
-router.route('/post-create').post(createPost);
+router.route('/post-create').post(protect, createPost);
 
-router.route('/:id').put(updatePost);
+router.route('/:id').put(protect, updatePost);
 
-router.route('/:id').delete(deletePost);
+router.route('/:id').delete(protect, admin, deletePost);
 
 module.exports = router;

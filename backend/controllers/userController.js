@@ -1,13 +1,12 @@
 const User = require('../models/userModel');
-const Post = require('../models/postModel');
 const asyncHandler = require('../utils/catchAsync');
 
 exports.getAllUsers = asyncHandler(async (req, res) => {
-  const users = await User.find();
+  const data = await User.find();
   res.status(200).json({
     status: 'success',
-    result: users.length,
-    users,
+    results: data.length,
+    data,
   });
 });
 
@@ -16,10 +15,10 @@ exports.getUser = asyncHandler(async (req, res) => {
   if (!user) {
     res.status(404).json('document not found, please enter valid ID');
   }
-  const { password, ...all } = user._doc;
+  const { password, __v, ...data } = user._doc;
   res.status(200).json({
     status: 'success',
-    all,
+    data,
   });
 });
 
@@ -40,10 +39,9 @@ exports.updateUser = asyncHandler(async (req, res) => {
 });
 
 exports.deleteUser = asyncHandler(async (req, res) => {
-  const user = await User.findByIdAndDelete(req.params.id);
-  await Post.deleteMany({ username: user.username });
-  if (!user) {
-    return res.status(404).json('No user found with this ID');
+  const user = await User.findById(req.params.id);
+  if (user) {
+    user.remove()
   }
   res.status(204).json({
     status: 'success',

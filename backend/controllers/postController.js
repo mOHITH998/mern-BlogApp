@@ -2,24 +2,24 @@ const Post = require('../models/postModel');
 const asyncHandler = require('../utils/catchAsync');
 
 exports.getAllPosts = asyncHandler(async (req, res) => {
-  let posts = {};
+  let data = {};
   const username = req.query.user;
   const categories = req.query.cat;
   if (username) {
-    posts = await Post.find({ username });
+    data = await Post.find({ username });
   } else if (categories) {
-    posts = await Post.find({
+    data = await Post.find({
       category: {
         $in: [categories],
       },
     });
   } else {
-    posts = await Post.find();
+    data = await Post.find();
   }
   res.status(200).json({
     status: 'success',
-    result: posts.length,
-    posts,
+    result: data.length,
+    data,
   });
 });
 
@@ -62,18 +62,10 @@ exports.updatePost = asyncHandler(async (req, res) => {
   }
 });
 
-// exports.deletePost = asyncHandler(async (req, res) => {
-//   const post = await Post.findById(req.params.id);
-//   if (post.username === post.body.username) {
-//     await post.delete();
-//     res.status(200).json('Post has been deleted..');
-//   } else {
-//     res.status(401).json('You can delete only your post.');
-//   }
-// });
-
 exports.deletePost = asyncHandler(async (req, res) => {
   const post = await Post.findById(req.params.id);
+  console.log(post.username)
+  console.log(req.body.username)
   if (post.username === req.body.username) {
     await post.delete();
     res.status(204).json({

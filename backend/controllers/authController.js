@@ -42,11 +42,11 @@ exports.loginUser = asyncHandler(async (req, res) => {
   }
 
   // to avoid showing password to the user
-  const { password, ...all } = user._doc;
+  const { password, ...data } = user._doc;
 
   res.status(200).json({
     status: 'success',
-    all,
+    data,
     token: genToken(user.id),
   });
 });
