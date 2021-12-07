@@ -2,24 +2,24 @@ const Post = require('../models/postModel');
 const asyncHandler = require('../utils/catchAsync');
 
 exports.getAllPosts = asyncHandler(async (req, res) => {
-  let posts = {};
+  let data = {};
   const username = req.query.user;
   const categories = req.query.cat;
   if (username) {
-    posts = await Post.find({ username });
+    data = await Post.find({ username });
   } else if (categories) {
-    posts = await Post.find({
+    data = await Post.find({
       category: {
         $in: [categories],
       },
     });
   } else {
-    posts = await Post.find();
+    data = await Post.find();
   }
   res.status(200).json({
     status: 'success',
-    result: posts.length,
-    posts,
+    results: data.length,
+    data,
   });
 });
 
