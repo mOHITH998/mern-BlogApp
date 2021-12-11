@@ -3,8 +3,7 @@ import { ReducerContext as Reducer } from './ReducerContext';
 
 export const CURRENT_STATE = {
   user: JSON.parse(localStorage.getItem('user')) || null,
-  isFetching: false,
-  error: false,
+  isFetching: false
 };
 
 export const Context = createContext(CURRENT_STATE);

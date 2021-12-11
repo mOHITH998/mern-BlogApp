@@ -27,3 +27,18 @@ export const UserUpdateSuccess = (user) => ({
 export const UserUpdateFailure = () => ({
   type: 'USER_FAILURE',
 });
+
+export const PostCreateRequest = () => ({
+  type: 'POST_CREATE_REQUEST'
+});
+
+export const PostCreateSuccess = () => ({
+  type: 'POST_CREATE_SUCCESS'
+});
+
+export const PostCreateFailure = () => ({
+  type: 'POST_CREATE_FAILURE'
+});
+
+
+

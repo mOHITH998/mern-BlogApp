@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
   singlePost: {
     flex: '9',
     padding: '1rem',
-    flexDirection: 'colimn',
+    flexDirection: 'column',
   },
   singlePostWrapper: {
     padding: '1.2rem',
@@ -30,6 +30,7 @@ export default makeStyles((theme) => ({
     color: '#575756',
   },
   singlePostInfo: {
+
     marginBottom: '1.3rem',
     display: 'flex',
     justifyContent: 'space-between',
@@ -40,10 +41,15 @@ export default makeStyles((theme) => ({
     marginLeft: '9px',
     cursor: 'pointer',
   },
+  singlePostImageWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   singlePostImage: {
-    width: '100%',
-    objectFit: 'cover',
-    height: '600px',
+    width: '70%',
+    height: '15%',
     borderRadius: ' 5px',
   },
   authorImg: {

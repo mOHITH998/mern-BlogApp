@@ -89,6 +89,7 @@ export default makeStyles((theme) => ({
     margin: '2rem 0',
     objectFit: 'cover',
     borderRadius: '50%',
+    fontSize: '3rem'
   },
   formControl: {
     margin: theme.spacing(1),

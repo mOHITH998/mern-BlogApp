@@ -46,6 +46,7 @@ export default makeStyles((theme) => ({
     textDecoration: 'none',
     backgroundColor: '#000',
     color: '#fff',
+    fontWeight: '600',
     padding: '0.4rem',
   },
   link: {
@@ -62,11 +63,12 @@ export default makeStyles((theme) => ({
   topListItem: {
     marginRight: '20px',
     fontSize: '1rem',
-    fontWeight: '300',
+
+    fontWeight: '600',
     cursor: 'pointer',
     padding: '1rem 0',
     '&:hover': {
-      color: 'grey',
+      color: '#ccc',
     },
   },
   topListItemSignIn: {
@@ -111,4 +113,12 @@ export default makeStyles((theme) => ({
     objectFit: 'cover',
     borderRadius: '50%',
   },
+  logo: {
+    backgroundColor: '#ccc',
+    padding: '0.2rem',
+    width: '120px',
+    borderTopLeftRadius: '15px',
+    borderBottomRightRadius: '15px',
+    color: '#282e3e',
+  }
 }));

@@ -7,11 +7,9 @@ export default makeStyles((theme) => ({
     width: '385px',
     margin: '30px 25px 40px 25px',
     boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-    padding: '1.5rem 1.5rem'
+    padding: '0.5rem 0.5rem'
   },
   postImage: {
-    width: '100%',
-    height: '250px',
     objectFit: 'cover',
     borderRadius: '7px',
   },

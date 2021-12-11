@@ -24,7 +24,7 @@ exports.getUser = asyncHandler(async (req, res) => {
 
 exports.updateUser = asyncHandler(async (req, res) => {
   const updatedDoc = await User.findByIdAndUpdate(req.params.id, req.body);
-  if (req.body.username === updatedDoc.username) {
+  if (req.body.username === updatedDoc._id) {
     return res.status(401).json('following User Already updated');
   }
   if (!updatedDoc) {

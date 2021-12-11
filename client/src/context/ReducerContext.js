@@ -34,6 +34,7 @@ export const ReducerContext = (state, action) => {
       return {
         user: state.user,
         isFetching: false,
+
         error: true,
       };
     case 'LOG_OUT':
@@ -42,6 +43,7 @@ export const ReducerContext = (state, action) => {
         isFetching: false,
         error: false,
       };
+
     default:
       return state;
   }

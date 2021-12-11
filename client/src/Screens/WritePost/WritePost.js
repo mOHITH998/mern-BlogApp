@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import {
   FormControl,
@@ -6,14 +6,10 @@ import {
   InputLabel,
   MenuItem,
   Container,
-  Button,
 } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import { Context } from "../../context/Context";
-
-import EDITORJS from "react-editor-js";
-import { EDITORJS_TOOLS } from "../../editorjs/constants";
 
 import useStyles from "../styles";
 
@@ -25,30 +21,49 @@ function WritePost() {
   const [category, setCategory] = useState("");
   const { user } = useContext(Context);
 
+  const authAxios = (tkn) => {
+    axios.create({
+      headers: {
+        authorization: `Bearer ${tkn}`
+      }
+
+    })
+  }
+
   const onSubmitPost = async (e) => {
     e.preventDefault();
     const newPost = {
-      username: user.all.username,
+      username: user.data.username,
       title,
       description,
-      category,
+      category
     };
+
     if (file) {
       const formData = new FormData();
-      const fileName = file.name;
+      const fileName = Date.now() + file.name;
       formData.append("name", fileName);
       formData.append("file", file);
       newPost.image = fileName;
       try {
-        await axios.post("http://localhost:4000/api/v3/upload", formData);
-      } catch (error) {}
+        await axios.post("http://localhost:4000/api/v3/upload", formData,
+          {
+            headers: {
+              authorization: `Bearer ${user.token}`
+            }
+
+          });
+      } catch (error) { }
       try {
         const { data } = await axios.post(
           "http://localhost:4000/api/v3/posts/post-create",
-          newPost
-        );
+          newPost, {
+          headers: {
+            authorization: `Bearer ${user.token}`
+          }
+        });
         window.location.replace(`/posts/?user=${data.savePost.username}`);
-      } catch (error) {}
+      } catch (error) { }
     }
   };
 

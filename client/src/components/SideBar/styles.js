@@ -20,23 +20,6 @@ export default makeStyles((theme) => ({
     lineHeight: '19px',
     fontSize: '1rem',
   },
-  sideBarItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  sideBarList: {
-    listStyleType: 'none',
-    marginBottom: '1.8rem',
-    textAlign: 'center',
-  },
-  sideBarListItem: {
-    fontStyle: 'italic',
-    display: 'inline-block',
-    width: '50%',
-    marginTop: '1rem',
-    cursor: 'pointer',
-  },
   userSmall: {
     width: theme.spacing(3),
     height: theme.spacing(3),
@@ -159,9 +142,8 @@ export default makeStyles((theme) => ({
   },
   imageTitle: {
     position: 'relative',
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
-      theme.spacing(1) + 6
-    }px`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6
+      }px`,
   },
   imageMarked: {
     height: 3,
@@ -202,20 +184,20 @@ export default makeStyles((theme) => ({
   catsLink: {
     textDecoration: 'none',
     color: '#57606f',
-    "&:hover":{
+    "&:hover": {
       color: '#747d8c'
     }
   },
   sideBarItem: {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-},
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   sideBarList: {
-  listStyle: 'none',
-  marginBottom: '1.7rem',
+    listStyle: 'none',
+    marginBottom: '1.7rem',
 
-},
+  },
   sideBarListItem: {
     display: 'inline-block',
     width: '50%',

@@ -7,7 +7,7 @@ function Post({ post }) {
   const file = 'http://localhost:4000/image/';
   return (
     <div className={classes.post}>
-      <img className={classes.postImage} src={file + post.image} alt="post-5" />
+      <img className={classes.postImage} src={file + post.image} alt="post" />
       <div className={classes.postContainer}>
         <Link to={`/post/${post._id}`} className={classes.Link}>
           <span className={classes.postTitle}>{post.title}</span>

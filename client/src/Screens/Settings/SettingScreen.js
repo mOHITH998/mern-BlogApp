@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Typography, TextField, Button, IconButton } from '@material-ui/core';
+import { Typography, TextField, Button, IconButton, Avatar } from '@material-ui/core';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import makeStyles from '../styles';
 import { Context } from '../../context/Context';
@@ -38,11 +38,11 @@ function SettingScreen() {
       updatedUser.profilePic = fileName;
       try {
         await axios.post('http://localhost:4000/api/v3/upload', formData);
-      } catch (error) {}
+      } catch (error) { }
       try {
         setSuccess(true);
         const { data } = await axios.put(
-          `http://localhost:4000/api/v3/users/${user.all._id}`,
+          `http://localhost:4000/api/v3/users/${user.data._id}`,
           updatedUser
         );
         dispatch(UserUpdateSuccess(data));
@@ -54,11 +54,11 @@ function SettingScreen() {
 
   const deleteProfile = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/v3/users/${user.all._id}`, {
+      await axios.delete(`http://localhost:4000/api/v3/users/${user.data._id}`, {
         data: null,
       });
       window.location.reload();
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
@@ -73,9 +73,14 @@ function SettingScreen() {
           Settings
         </Typography>
         <div className={classes.userProfileWrapper}>
-          <img
-            src={file ? URL.createObjectURL(file) : PF + user.all.profilePic}
+          {/* <img
+            src={file ? URL.createObjectURL(file) : PF + user.data.profilePic}
             alt="profilePic"
+            className={classes.userPic}
+          /> */}
+          <Avatar
+            src={file ? URL.createObjectURL(file) : PF + user.data.profilePic}
+            alt={user.data.username.toUpperCase()}
             className={classes.userPic}
           />
 
@@ -95,7 +100,7 @@ function SettingScreen() {
           <TextField
             label="Username"
             style={{ margin: 8 }}
-            placeholder={user.all.username}
+            placeholder={user.data.username}
             onChange={(e) => setUsername(e.target.value)}
             fullWidth
             margin="normal"
@@ -106,7 +111,7 @@ function SettingScreen() {
           <TextField
             label="Email"
             style={{ margin: 8 }}
-            placeholder={user.all.email}
+            placeholder={user.data.email}
             onChange={(e) => setEmail(e.target.value)}
             fullWidth
             margin="normal"

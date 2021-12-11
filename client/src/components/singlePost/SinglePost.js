@@ -13,6 +13,7 @@ function SinglePost() {
   const classes = makeStyles();
   const location = useLocation();
   const [postScreen, setPostScreen] = useState('');
+  const [loading, setLoading] = useState(false)
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [update, setUpdate] = useState(false);
@@ -37,23 +38,29 @@ function SinglePost() {
       await axios.delete(
         `http://localhost:4000/api/v3/posts/${postScreen._id}`,
         {
-          data: { username: user.all.username },
-        }
+          data: { username: user.data.username },
+          headers: {
+            authorization: `Bearer ${user.token}`
+          }
+        },
       );
       window.location.replace('http://localhost:3000/');
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const updateHandler = async () => {
     try {
       await axios.put(`http://localhost:4000/api/v3/posts/${postScreen._id}`, {
-        username: user.all.username,
+        username: user.data.username,
         title,
         description,
+        Headers: {
+          authorization: `Bearer ${user.token}`
+        }
       });
       setUpdate(false);
       window.location.reload();
-    } catch (error) {}
+    } catch (error) { }
   };
   return (
     <div className={classes.singlePost}>
@@ -83,13 +90,15 @@ function SinglePost() {
           </span>
           <span>{new Date(postScreen.createdAt).toDateString()}</span>
         </div>
+        <div className={classes.singlePostImageWrapper}>
+          <img
+            className={classes.singlePostImage}
+            src={file + postScreen.image}
+            alt=""
+          />
 
-        <img
-          className={classes.singlePostImage}
-          src={file + postScreen.image}
-          alt=""
-        />
-        {postScreen.username === user?.all.username && (
+        </div>
+        {postScreen.username === user?.data.username && (
           <ul className={classes.editPost}>
             <li>
               <EditIcon color="action" onClick={() => setUpdate(true)} />

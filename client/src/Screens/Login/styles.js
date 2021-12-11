@@ -30,10 +30,12 @@ export default makeStyles((theme) => ({
     marginTop: '20px',
     lineHeight: '4rem',
     width: '380px',
+    paddingLeft: '1.5rem'
   },
   loginInput: {
     padding: '1.2rem',
     fontSize: '1rem',
+    width: '90%',
     border: 'none',
     borderRadius: '5px',
     '&:focus': {
